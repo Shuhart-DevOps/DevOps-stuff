@@ -1,0 +1,14 @@
+services:
+  jenkins:
+    build:
+      context: .
+      args:
+        BASE_IMAGE: registry.red-soft.ru/ubi8/ubi
+        JENKINS_WAR_URL: https://get.jenkins.io/war-stable/2.504.3/jenkins.war
+    ports:
+      - "8080:8080"
+    environment:
+      - JENKINS_PORT=8080
+    volumes:
+      - /opt/data/jenkins:/jenkins_home
+    restart: unless-stopped

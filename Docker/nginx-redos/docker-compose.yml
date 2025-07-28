@@ -1,0 +1,11 @@
+services:
+  nginx:
+    build:
+      context: .
+      args:
+        BASE_IMAGE: registry.red-soft.ru/ubi8/ubi
+    network_mode: host
+    volumes:
+      - /opt/app/nginx/:/etc/nginx/
+      - /opt/data/nginx/:/usr/share/nginx/
+    restart: unless-stopped
